@@ -4,13 +4,19 @@ using System.Collections;
 public class mover : MonoBehaviour {
 	public Rigidbody rb;
 	public float speed;
+	Vector3 direction;
 	// Use this for initialization
 	void Start () {
-		rb.velocity = transform.forward * speed;
+		direction = transform.forward;
+		setVelocity ();
 	}
-	
-	// Update is called once per frame
-	void Update () {
-	
+
+	private void setVelocity(){
+		rb.velocity = direction * speed;
+	}
+
+	public void Deflect(Vector3 deflected){
+		direction = -deflected;
+		setVelocity ();
 	}
 }
