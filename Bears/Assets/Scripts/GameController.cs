@@ -4,17 +4,22 @@ using System.Text;
 using System.Collections;
 
 public class GameController : MonoBehaviour {
+	private GameObject [] respawn;
 	private GameObject [] answers;
 	private GUIText question;
 	private GameObject [] podiums;
 	private TextAsset database;
+	public GameObject Answer;
 
 	// Use this for initialization
 	void Start () {
 		if (answers == null || question == null || podiums == null) {
-			answers = GameObject.FindGameObjectsWithTag ("Dragable");
+			respawn = GameObject.FindGameObjectsWithTag ("Respawn");
 			question= GameObject.FindGameObjectWithTag ("Question").GetComponent<GUIText> ();
 			podiums = GameObject.FindGameObjectsWithTag ("Podium");
+			for(var index = 0; index<3; index++)
+				Instantiate(Answer, respawn[index].transform.position, Answer.transform.localRotation);
+			answers = GameObject.FindGameObjectsWithTag("Dragable");
 		}
 		loadData ();
 		question.text = "Testing";
@@ -24,7 +29,7 @@ public class GameController : MonoBehaviour {
 		try{
 			string line;
 			StreamReader fileReader = new StreamReader("Assets/test.txt", Encoding.ASCII);
-			int linenum = 0;
+			//int linenum = 0;
 			using(fileReader){
 				do{
 					line = fileReader.ReadLine();
