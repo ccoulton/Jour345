@@ -51,13 +51,10 @@ public class AnswerController : MonoBehaviour {
 	void OnTriggerEnter(Collider collision){
 		Debug.Log ("trigger enter");
 		podium = collision.gameObject;
-		//debug text change
-		text.text = "00%";
 	}
 
 	void OnTriggerExit(Collider collision){
 		Debug.Log ("Trigger Exit");
 		podium = null;
-		text.text = "##%";
 	}
 }

@@ -1,6 +1,5 @@
-test file
-Check all the things
-
-60
-35
-05
+test question
+%	%	%
+Rep	Dem	Ind
+60	35	05
+source
